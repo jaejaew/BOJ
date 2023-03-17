@@ -1,6 +1,9 @@
 .vscode/
 /input
 *.dSYM/
+./format.cpp
+./format_swea.cpp
+./input
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,visualstudiocode,macos
