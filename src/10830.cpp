@@ -37,23 +37,41 @@ void copy_matrix(vector<vector<ll> >& dst, const vector<vector<ll> >& src) {
 void power_matrix(ll p) {
 	// after this function, mat_powered will contain mat^p
 
-	if (p == 1LL) {
+	if (p <= 1LL) {
         copy_matrix(mat_powered, mat);
         return;
 	}
 
 	power_matrix(p << 1);
-        product_matrix(mat_powered, mat_powered);
-    
+	product_matrix(mat_powered, mat_powered);
+	copy_matrix(mat_powered, product);
+
+	if (p & 1) {
+        product_matrix(mat_powered, mat);
+        copy_matrix(mat_powered, product);
+	}
 }
 
+void print_matrix() {
+	for (int i = 0; i < mat_powered.size(); i++){
+        for (int j = 0; j < mat_powered[0].size(); j++){
+            cout << mat_powered[i][j] << ' ';
+        }
+        cout << '\n';
+	}
+}
 int main(void) {
 	cin.tie(NULL)->sync_with_stdio(false);
-	//	freopen("./input/10830.txt", "r", stdin);
+	freopen("../input.txt", "r", stdin);
 
 	cin >> N;
 	cin >> B;
-	for (int i = 0; i < N; i++) 
-		for (int j = 0; j < N; j++)
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
             cin >> mat[i][j];
+		}
+	}
+
+        power_matrix(B);
+        print_matrix();
 }
