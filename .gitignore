@@ -4,6 +4,7 @@
 ./format.cpp
 ./format_swea.cpp
 ./input
+./input.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,visualstudiocode,macos
