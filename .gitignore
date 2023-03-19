@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,c++
 
@@ -9,6 +10,7 @@
 
 # Unignore all dirs
 !*/
+=======
 
 ### C++ ###
 # Prerequisites
@@ -96,6 +98,7 @@ Temporary Items
 .history
 .ionide
 
+<<<<<<< HEAD
 ## App packaging
 *.ipa
 *.dSYM.zip
@@ -104,3 +107,6 @@ Temporary Items
 *.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++
+=======
+# End of https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,macos
+>>>>>>> e6b7eb2480bc9cf3cd04b32a67831765c34ef442
