@@ -105,7 +105,7 @@ Temporary Items
 *.dSYM
 *.dSYM/
 *.json
-
+./format.cpp
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++
 =======
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,macos
