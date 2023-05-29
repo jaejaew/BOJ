@@ -53,7 +53,7 @@ class HashMap {
     }
 
    public:
-    HashMap() {
+    void init() {
         std::memset(table, 0, sizeof(table));
         nodeCnt = 0;
     }
