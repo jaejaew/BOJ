@@ -9,24 +9,31 @@
 
 using namespace std;
 
-/* You can use the special method if we can easily maintain child.
- * e.g. lowercase/uppercase/numeric only
- */
-struct TrieNode {
-    bool isLeaf;
-    map<char, TrieNode *> child;    /* 1. general */
-    TrieNode *child[MAXCHILD];      /* 2. special */
-} trieNode[MAXNODE];
-int trieNodeCnt;
-struct TrieNode *getTrieNode() {
-    struct TrieNode *pNode = &trieNode[trieNodeCnt++];
-    pNode->isLeaf = false;
-    memset(pNode->child, 0, sizeof(pNode->child));
-}
-
 class Trie {
    private:
+    /* You can use the special method if we can easily maintain child.
+     * e.g. lowercase/uppercase/numeric only
+     */ 
+    struct TrieNode {
+        bool valid;
+        map<char, TrieNode *> child;    /* 1. general */
+        TrieNode *child[MAXCHILD];      /* 2. special */
+    } trieNode[MAXNODE];
+    int trieNodeCnt;
+
     struct TrieNode *root;
+
+    struct TrieNode *getTrieNode() {
+        struct TrieNode *pNode = &trieNode[trieNodeCnt++];
+        pNode->valid = false;
+        /* init child of pNode */
+        return pNode;
+    }
+
+
+    void _dfs(TrieNode *pNode) {
+        /* dfs as you want */
+    }
 
    public:
     void init() {
@@ -41,6 +48,7 @@ class Trie {
                 pNode->child[c - OFFSET] = getTrieNode();
             pNode = pNode->child[c - OFFSET];
         }
+        pNode->valid = true;
     }
 
     void remove(const string& str) {
@@ -50,7 +58,7 @@ class Trie {
                 return;
             pNode = pNode->child[c - OFFSET];
         }
-        pNode->isLeaf = false;
+        pNode->valid = false;
     }
 
     bool find(const string& str) {
@@ -60,6 +68,10 @@ class Trie {
                 return false;
             pNode = pNode->child[c - OFFSET];
         }
-        return pNode->isLeaf;
+        return pNode->valid;
+    }
+
+    void dfs() {
+        _dfs(root);
     }
 } trie;
