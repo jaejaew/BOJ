@@ -13,6 +13,16 @@ auto y = std::upper_bound(v.begin(), v.end(), K); /* return iterator to v[i], wh
 
 
 /* find first/last true */
+/* l, r의 범위를 조정할 때 열린 구간인지, 닫힌 구간인지
+ * 고려하면 쉽게 1을 어디에 더하거나 빼야 하는지 알 수 있다.
+ 
+ * first true에 f(m)이 true라면 m 기준 오른쪽 구간은 모두 true
+ * 곧 r을 왼쪽으로 당겨야 하는데, r은 열린 구간이니 그대로 당겨오면 된다.
+ * last true에서 f(m)이 true라면 m 기준 왼쪽 구간은 모두 true
+ * 곧, l을 오른쪽으로 당겨야 하는데, l은 열린 구간이니 그대로 당겨오면 된다.
+ * 
+ * 두 상황에서 m은 모두 닫힌 구간을 base로 구한다.
+ */
 const bool f(int);
 
 int first_true(int l, int r) {
@@ -27,7 +37,7 @@ int first_true(int l, int r) {
 int last_true(int l, int r) {
     /* (l, r] */
     while (l!=r) {
-        int m = l + (r - l) >> 1;
+        int m = r - (r - l) >> 1;
         f(m) ? l = m : r = m - 1;
     }
     return l;
